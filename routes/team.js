@@ -63,9 +63,11 @@ router.post("/enroll", async (req, res) => {
 
     res.json({ message: "Enrollment email sent successfully" });
   } catch (error) {
-    console.error("SMTP error:", error);
-    res.status(500).json({ message: "Email failed" });
-  }
-});
+  console.error("SMTP error FULL:", error);
+  res.status(500).json({
+    message: "Email failed",
+    error: error.message,
+  });
+}
 
 export default router;
