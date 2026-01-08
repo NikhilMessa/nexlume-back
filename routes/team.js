@@ -20,8 +20,7 @@ router.post("/enroll", async (req, res) => {
 
     <h3>🌟 How to Apply?</h3>
     <p>
-      <a href="https://forms.gle/guHb8ZoeM1ybnSe98"
-         style="color:#0073e6; text-decoration:none;">
+      <a href="https://forms.gle/guHb8ZoeM1ybnSe98">
         Apply Here
       </a>
     </p>
@@ -32,21 +31,6 @@ router.post("/enroll", async (req, res) => {
       <li>Practical experience</li>
       <li>Mentorship & growth</li>
     </ul>
-
-    <p>
-      Best regards,<br>
-      <strong>The NexLume Team</strong>
-    </p>
-
-    <img
-      src="https://res.cloudinary.com/da2ufcgyv/image/upload/v1738524093/jutgcwfol612xoxfgfnh.jpg"
-      alt="NexLume Logo"
-      style="width:150px; margin-top:10px;"
-    />
-
-    <p style="font-size:12px; color:#777;">
-      This is an automated email. Please do not reply.
-    </p>
   `;
 
   try {
@@ -62,7 +46,10 @@ router.post("/enroll", async (req, res) => {
 
     res.json({ message: "Enrollment email sent successfully" });
   } catch (error) {
-    console.error("Brevo API error:", error);
+    console.error(
+      "BREVO FULL ERROR:",
+      error?.response?.body || error
+    );
     res.status(500).json({ message: "Email failed" });
   }
 });
